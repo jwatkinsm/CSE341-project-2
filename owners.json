@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Joshua",
+    "lastName": "Watkins",
+    "email": "qwertyuiop.gi@gmail.com",
+    "vehiclesOwned": "1",
+    "birthday": "10/28/1994"
+  },
+  {
+    "firstName": "Elon",
+    "lastName": "Musk",
+    "email": "qwertyuiop.gi@gmail.com",
+    "vehiclesOwned": "100000000000000",
+    "birthday": "10/28/1994"
+  }
+]

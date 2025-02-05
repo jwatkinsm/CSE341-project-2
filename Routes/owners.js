@@ -1,7 +1,7 @@
 const express = require("express");
 const routes = express.Router();
 
-const ownersController = require("../Controllers");
+const ownersController = require("../Controllers/owners");
 
 routes.get("/", ownersController.getAll);
 

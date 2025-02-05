@@ -1,0 +1,20 @@
+[
+  {
+    "make": "Toyota",
+    "model": "Rav4",
+    "year": "2019",
+    "color": "dark-gray",
+    "interiorColor": "black",
+    "type": "SUV",
+    "milage": "60000"
+  },
+  {
+    "make": "Tesla",
+    "model": "Cyber Truck",
+    "year": "2024",
+    "color": "gray",
+    "interiorColor": "black",
+    "type": "Truck",
+    "milage": "0"
+  }
+]
