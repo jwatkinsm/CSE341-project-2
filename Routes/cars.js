@@ -7,10 +7,10 @@ routes.get("/", carsController.getAll);
 
 routes.get("/:id", carsController.getSingle);
 
-routes.post("/", carsController.createContact);
+routes.post("/", carsController.createCar);
 
-routes.put("/:id", carsController.updateContact);
+routes.put("/:id", carsController.updateCar);
 
-routes.delete("/:id", carsController.deleteContact);
+routes.delete("/:id", carsController.deleteCar);
 
 module.exports = routes;

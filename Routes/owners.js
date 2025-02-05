@@ -7,10 +7,10 @@ routes.get("/", ownersController.getAll);
 
 routes.get("/:id", ownersController.getSingle);
 
-routes.post("/", ownersController.createContact);
+routes.post("/", ownersController.createOwner);
 
-routes.put("/:id", ownersController.updateContact);
+routes.put("/:id", ownersController.updateOwner);
 
-routes.delete("/:id", ownersController.deleteContact);
+routes.delete("/:id", ownersController.deleteOwner);
 
 module.exports = routes;
