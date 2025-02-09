@@ -18,6 +18,17 @@ Content-Type: application/json
 }
 ###
 POST http://localhost:8080/cars
+Content-Type: application/json
+
+{
+    "make": "Jeep",
+    "model": "Wrangler",
+    "year": "2019",
+    "color": "Blue",
+    "interiorColor": "black",
+    "type": "SUV",
+    "milage": "6000"
+}
 ###
 DELETE http://localhost:8080/cars/67a3c79f6dc7182aed1635a8
 ###
@@ -28,6 +39,16 @@ GEt http://localhost:8080/owners/67a3c7b36dc7182aed1635aa
 GET http://localhost:8080/owners/67a3c7b36dc7182aed1635ab
 ###
 POST http://localhost:8080/owners
+Content-Type: application/json
+
+{
+ 
+"firstName":"Erin",
+"lastName":"Combs",
+"email":"enniki@gmail.com",
+"vehiclesOwned":"2",
+"birthday":"09/18/1994"   
+}
 ###
 PUT http://localhost:8080/owners/67a3c7b36dc7182aed1635ab
 Content-Type: application/json
@@ -51,20 +72,19 @@ GET https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a7
 GET https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a8
 ###
 POST https://cse341-project-2-dafc.onrender.com/cars
+Content-Type: application/json
+
+{
+    "make": "Jeep",
+    "model": "Wrangler",
+    "year": "2019",
+    "color": "Blue",
+    "interiorColor": "black",
+    "type": "SUV",
+    "milage": "6000"
+}
 ###
 PUT https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a7
-###
-DELETE https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a8
-###
-GET https://cse341-project-2-dafc.onrender.com/owners
-###
-GET https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635aa
-###
-GET https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635ab
-###
-POST https://cse341-project-2-dafc.onrender.com/owners
-###
-PUT https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635aa
 Content-Type: application/json
 
 {
@@ -77,4 +97,35 @@ Content-Type: application/json
     "milage": "60500"
 }
 ###
-DELETE https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635ab
+DELETE https://cse341-project-2-dafc.onrender.com/cars/67a82c21150a734078f792c8
+###
+GET https://cse341-project-2-dafc.onrender.com/owners
+###
+GET https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635aa
+###
+GET https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635ab
+###
+POST https://cse341-project-2-dafc.onrender.com/owners
+Content-Type: application/json
+
+{
+ 
+"firstName":"Erin",
+"lastName":"Combs",
+"email":"enniki@gmail.com",
+"vehiclesOwned":"2",
+"birthday":"09/18/1994"   
+}
+###
+PUT https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635aa
+Content-Type: application/json
+
+{
+   "firstName":"Elon",
+"lastName":"Musk",
+"email":"muskx@gmail.com",
+"vehiclesOwned":"100000000000000",
+"birthday":"07/28/1974"   
+}
+###
+DELETE https://cse341-project-2-dafc.onrender.com/owners/67a82ca5150a734078f792c9
