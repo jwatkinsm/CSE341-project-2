@@ -5,7 +5,7 @@ const doc = {
     title: "My API",
     description: "carOwnership API",
   },
-  host: "cse341-project-2-dafc.onrender.com",
+  host: "localhost:8080",
   schemes: ["https"],
 };
 

@@ -1,0 +1,80 @@
+GET http://localhost:8080/cars
+###
+GET http://localhost:8080/cars/67a3c79f6dc7182aed1635a7
+###
+GET http://localhost:8080/cars/67a3c79f6dc7182aed1635a8
+###
+PUT http://localhost:8080/cars/67a3c79f6dc7182aed1635a7 HTTP/1.1
+Content-Type: application/json
+
+{
+    "make": "Toyota",
+    "model": "Rav4",
+    "year": "2019",
+    "color": "dark-gray",
+    "interiorColor": "black",
+    "type": "SUV",
+    "milage": "60500"
+}
+###
+POST http://localhost:8080/cars
+###
+DELETE http://localhost:8080/cars/67a3c79f6dc7182aed1635a8
+###
+GET http://localhost:8080/owners
+###
+GEt http://localhost:8080/owners/67a3c7b36dc7182aed1635aa
+###
+GET http://localhost:8080/owners/67a3c7b36dc7182aed1635ab
+###
+POST http://localhost:8080/owners
+###
+PUT http://localhost:8080/owners/67a3c7b36dc7182aed1635ab
+Content-Type: application/json
+
+{
+ 
+"firstName":"Elon",
+"lastName":"Musk",
+"email":"muskx@gmail.com",
+"vehiclesOwned":"100000000000000",
+"birthday":"07/28/1974"   
+}
+###
+DELEtE http://localhost:8080/owners/67a3c7b36dc7182aed1635ab
+//production
+###
+GET https://cse341-project-2-dafc.onrender.com/cars
+###
+GET https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a7
+###
+GET https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a8
+###
+POST https://cse341-project-2-dafc.onrender.com/cars
+###
+PUT https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a7
+###
+DELETE https://cse341-project-2-dafc.onrender.com/cars/67a3c79f6dc7182aed1635a8
+###
+GET https://cse341-project-2-dafc.onrender.com/owners
+###
+GET https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635aa
+###
+GET https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635ab
+###
+POST https://cse341-project-2-dafc.onrender.com/owners
+###
+PUT https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635aa
+Content-Type: application/json
+
+{
+    "make": "Toyota",
+    "model": "Rav4",
+    "year": "2019",
+    "color": "dark-gray",
+    "interiorColor": "black",
+    "type": "SUV",
+    "milage": "60500"
+}
+###
+DELETE https://cse341-project-2-dafc.onrender.com/owners/67a3c7b36dc7182aed1635ab

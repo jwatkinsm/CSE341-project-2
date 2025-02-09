@@ -9,7 +9,7 @@ const port = process.env.PORT || 8080;
 // Use body-parser middleware to parse JSON data
 app.use(bodyParser.json());
 
-app.use(express.json()).use((req, res, next) => {
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
