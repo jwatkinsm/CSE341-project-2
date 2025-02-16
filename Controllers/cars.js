@@ -2,17 +2,18 @@ const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId; // Ensure you import ObjectId
 
 const getAll = async (req, res) => {
-  try {
-    const result = await mongodb.getDb().db().collection("cars").find();
-    result.toArray().then((lists) => {
+  mongodb
+    .getDb()
+    .db()
+    .collection("cars")
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(lists);
     });
-  } catch (err) {
-    res
-      .status(400)
-      .send({ message: "There's something wrong getting the list." });
-  }
 };
 
 const getSingle = async (req, res) => {
@@ -31,9 +32,7 @@ const getSingle = async (req, res) => {
         res.status(200).json(lists[0]);
       });
     } catch (err) {
-      res
-        .status(400)
-        .send({ message: "There's something wrong getting the car from ID." });
+      res.status(400).send({ message: err });
     }
   }
 };
@@ -48,17 +47,16 @@ const createCar = async (req, res) => {
     type: req.body.type,
     milage: req.body.milage,
   };
-  try {
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection("cars")
-      .insertOne(car);
-    if (response.acknowledged) {
-      res.status(204).send();
-    }
-  } catch (err) {
-    res.status(400).send({ message: "Couldn't register car." });
+
+  const response = await mongodb.getDb().db().collection("cars").insertOne(car);
+  if (response.acknowledged) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(
+        response.error || "Some error occurred while creating the contact.",
+      );
   }
 };
 const updateCar = async (req, res) => {

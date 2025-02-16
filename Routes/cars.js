@@ -8,9 +8,9 @@ routes.get("/", carsController.getAll);
 
 routes.get("/:id", carsController.getSingle);
 
-routes.post("/", validator.carValidationRules, carsController.createCar);
+routes.post("/", validator.saveCar, carsController.createCar);
 
-routes.put("/:id", validator.carValidationRules, carsController.updateCar);
+routes.put("/:id", validator.saveCar, carsController.updateCar);
 
 routes.delete("/:id", carsController.deleteCar);
 

@@ -45,7 +45,7 @@ Content-Type: application/json
  
 "firstName":"Erin",
 "lastName":"Combs",
-"email":"enniki@gmail.com",
+"email":"",
 "vehiclesOwned":"2",
 "birthday":"09/18/1994"   
 }

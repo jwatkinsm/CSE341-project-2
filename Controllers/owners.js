@@ -1,25 +1,40 @@
 const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId; // Ensure you import ObjectId
 
-const getAll = async (req, res, next) => {
-  const result = await mongodb.getDb().db().collection("owners").find();
-  result.toArray().then((lists) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(lists);
-  });
-};
-
-const getSingle = async (req, res, next) => {
-  const userId = new ObjectId(req.params.id); // Convert the string ID to an ObjectId
-  const result = await mongodb
+const getAll = async (req, res) => {
+  mongodb
     .getDb()
     .db()
     .collection("owners")
-    .find({ _id: userId });
-  result.toArray().then((lists) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(lists[0]);
-  });
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(lists);
+    });
+};
+
+const getSingle = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("Must use a valid id.");
+  } else {
+    try {
+      const userId = new ObjectId(req.params.id); // Convert the string ID to an ObjectId
+      mongodb
+        .getDb()
+        .db()
+        .collection("owners")
+        .find({ _id: userId })
+        .toArray((err, lists) => {
+          res.setHeader("Content-Type", "application/json");
+          res.status(200).json(lists[0]);
+        });
+    } catch (err) {
+      res.status(400).send({ message: err });
+    }
+  }
 };
 
 const createOwner = async (req, res) => {
@@ -46,6 +61,9 @@ const createOwner = async (req, res) => {
   }
 };
 const updateOwner = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("Must use a valid contact id to update a contact.");
+  }
   const userId = new ObjectId(req.params.id);
   // be aware of updateOne if you only want to update specific fields
   const owner = {
@@ -72,6 +90,9 @@ const updateOwner = async (req, res) => {
   }
 };
 const deleteOwner = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("Must use a valid contact id to delete a contact.");
+  }
   const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()
