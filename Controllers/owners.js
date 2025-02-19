@@ -2,18 +2,18 @@ const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId; // Ensure you import ObjectId
 
 const getAll = async (req, res) => {
-  mongodb
-    .getDb()
-    .db()
-    .collection("owners")
-    .find()
-    .toArray((err, lists) => {
-      if (err) {
-        res.status(400).json({ message: err });
-      }
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(lists);
-    });
+  try {
+    const lists = await mongodb
+      .getDb()
+      .db()
+      .collection("owners")
+      .find()
+      .toArray();
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json(lists);
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
 };
 
 const getSingle = async (req, res) => {
@@ -45,19 +45,23 @@ const createOwner = async (req, res) => {
     vehiclesOwned: req.body.vehiclesOwned,
     birthday: req.body.birthday,
   };
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection("owners")
-    .insertOne(owner);
-  if (response.acknowledged) {
-    res.status(201).json(response);
-  } else {
-    res
-      .status(500)
-      .json(
-        response.error || "Some error occurred while creating the contact.",
-      );
+  try {
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection("owners")
+      .insertOne(owner);
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    } else {
+      res
+        .status(500)
+        .json(
+          response.error || "Some error occurred while creating the owner.",
+        );
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
 const updateOwner = async (req, res) => {

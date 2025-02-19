@@ -2,18 +2,18 @@ const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId; // Ensure you import ObjectId
 
 const getAll = async (req, res) => {
-  mongodb
-    .getDb()
-    .db()
-    .collection("cars")
-    .find()
-    .toArray((err, lists) => {
-      if (err) {
-        res.status(400).json({ message: err });
-      }
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(lists);
-    });
+  try {
+    const result = await mongodb
+      .getDb()
+      .db()
+      .collection("cars")
+      .find()
+      .toArray();
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
 };
 
 const getSingle = async (req, res) => {
@@ -26,11 +26,9 @@ const getSingle = async (req, res) => {
         .getDb()
         .db()
         .collection("cars")
-        .find({ _id: userId });
-      result.toArray().then((lists) => {
-        res.setHeader("Content-Type", "application/json");
-        res.status(200).json(lists[0]);
-      });
+        .findOne({ _id: userId });
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(result);
     } catch (err) {
       res.status(400).send({ message: err });
     }
