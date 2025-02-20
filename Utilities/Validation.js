@@ -25,7 +25,7 @@ const saveOwner = (req, res, next) => {
   const validationRule = {
     firstName: "required|string",
     lastName: "required|string",
-    email: "required| email",
+    email: "required|email",
     vehiclesOwned: "required|string",
     birthday: "required|string",
   };

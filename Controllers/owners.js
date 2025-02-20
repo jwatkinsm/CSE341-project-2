@@ -45,23 +45,19 @@ const createOwner = async (req, res) => {
     vehiclesOwned: req.body.vehiclesOwned,
     birthday: req.body.birthday,
   };
-  try {
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection("owners")
-      .insertOne(owner);
-    if (response.acknowledged) {
-      res.status(201).json(response);
-    } else {
-      res
-        .status(500)
-        .json(
-          response.error || "Some error occurred while creating the owner.",
-        );
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  const response = await mongodb
+    .getDb()
+    .db()
+    .collection("owners")
+    .insertOne(owner);
+  if (response.acknowledged) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(
+        response.error || "Some error occurred while creating the contact.",
+      );
   }
 };
 const updateOwner = async (req, res) => {
