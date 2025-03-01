@@ -51,7 +51,7 @@ const createOwner = async (req, res) => {
     .collection("owners")
     .insertOne(owner);
   if (response.acknowledged) {
-    res.status(204).send();
+    res.status(201).send();
   } else {
     res
       .status(500)
