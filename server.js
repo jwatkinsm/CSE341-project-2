@@ -17,7 +17,6 @@ const config = {
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
 };
-
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 
